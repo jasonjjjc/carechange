@@ -79,8 +79,8 @@ export default function Quiz() {
   const [showResult, setShowResult] = useState(false);
 
   const handleAnswer = (option: string) => {
-    const answer = { question: currentQuestion.text, answer: option };
-    setAnswers([...answers, JSON.stringify(answer)]);
+    const answer = option;
+    setAnswers([...answers, answer]);
 
     const nextQuestionId = currentQuestion.next.find((n) => n.value === option)?.nextId;
     const nextQuestion = questions.find((q) => q.id === nextQuestionId);
@@ -113,11 +113,9 @@ export default function Quiz() {
         <div>
           <h1>Quiz Result</h1>
           <p>You answered {answers.length} questions.</p>
-          <ul>
-            {answers.map((answer) => (
-              <li key={answer}>{answer}</li>
-            ))}
-          </ul>
+          <p>
+            {answers.join(". ")}
+          </p>
           <button onClick={resetQuiz}>Reset Quiz</button>
         </div>
       )}
