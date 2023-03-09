@@ -8,7 +8,7 @@
 ---
 
 <p align="center"> 
-CareNA is the fully comprehensive way to quickly and easily assess and communicate any person's mental health and social care needs. 
+Caregram is the fully comprehensive way to quickly and easily assess and communicate any person's mental health and social care needs. 
 <br>
 The interface is designed to be so simple that anyone from the age of 10 onwards could perform a comperehensive combined mental health and social care needs assessment. 
 </p>
