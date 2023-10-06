@@ -105,17 +105,6 @@ const Quiz: NextPage = ({
 
   return (
     <>
-      <Head>
-        <title>CareChange | Communication made better</title>
-        <meta
-          name="description"
-          content="Streamlined communication between clients and professionals."
-        />
-        <meta name="author" content="Jason Chalangary" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <body>
         <div className="flex flex-col gap-2 min-h-screen text-gray-800">
           <Navbar />
           {/* check whether the result should be shown or not */}
@@ -163,7 +152,6 @@ const Quiz: NextPage = ({
             </div>
           )}
         </div>
-      </body>
     </>
   );
 };
