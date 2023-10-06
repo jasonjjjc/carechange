@@ -14,43 +14,44 @@ type Question = {
 
 // fetch the questions from the api using getStaticProps so that the questions are available at build time
 
-// export const getStaticProps: GetStaticProps = async (context) => {
-//   const url = process.env.NEXT_PUBLIC_API_URL;
-//   const accessKey = process.env.NEXT_PUBLIC_API_KEY;
-//   console.log(accessKey, url);
-//   if (!url) {
-//     console.error("NEXT_PUBLIC_API_URL environment variable is not set.");
-//     return {
-//       notFound: true,
-//     };
-//   }
+export const getStaticProps: GetStaticProps = async (context) => {
+  const url = process.env.NEXT_PUBLIC_API_URL;
+  const accessKey = process.env.NEXT_PUBLIC_API_KEY;
+  
+  console.log(accessKey, url);
+  if (!url) {
+    console.error("NEXT_PUBLIC_API_URL environment variable is not set.");
+    return {
+      notFound: true,
+    };
+  }
 
-//   const headers = new Headers();
-//   headers.append("X-Access-Key", accessKey || "");
+  const headers = new Headers();
+  headers.append("X-Access-Key", accessKey || "");
 
-//   const result = await fetch(url, {
-//     headers,
-//   });
+  const result = await fetch(url, {
+    headers,
+  });
 
-//   const data = await result.json();
-//   const questions = data.record;
-//   return {
-//     props: {
-//       questions,
-//     },
-//   };
-// };
-
-export const getStaticProps: GetStaticProps = async () => {
-  const result = await fetch("http://localhost:3000/api/questions");
-  const questions = await result.json();
-
+  const data = await result.json();
+  const questions = data.record;
   return {
     props: {
       questions,
     },
   };
 };
+
+// export const getStaticProps: GetStaticProps = async () => {
+//   const result = await fetch("http://localhost:3000/api/questions");
+//   const questions = await result.json();
+
+//   return {
+//     props: {
+//       questions,
+//     },
+//   };
+// };
 
 
 // create a component that takes in the questions as a prop and renders the quiz
