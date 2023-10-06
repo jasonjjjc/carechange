@@ -1,13 +1,13 @@
 const Navbar = () => {
   return (
-    <div className="flex py-4 px-8 navbar bg-gray-800">
+    <div className="flex py-4 px-4 navbar">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl text-orange-100">
+        <a className="text-xl text-gray-800">
           CareChange
         </a>
       </div>
       <div className="flex-none">
-        <button className="btn btn-square btn-ghost">
+        <button className="text-gray-800">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
