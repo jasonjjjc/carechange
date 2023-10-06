@@ -105,53 +105,63 @@ const Quiz: NextPage = ({
 
   return (
     <>
-        <div className="flex flex-col gap-2 min-h-screen text-gray-800">
-          <Navbar />
-          {/* check whether the result should be shown or not */}
-          {!showResult ? (
-            <div className="flex flex-col gap-4 px-4 h-full md:max-h-3/4 justify-start items-center">
-              {/* display the current question text */}
-              <div className=" text-3xl text-center py-5">
-                {currentQuestion?.text}
-              </div>
-              {/* display the options */}
-              <div className="flex flex-col h-full justify-around">
-                {currentQuestion?.options.map((option) => (
-                  // use the answer as a unique key for each button to avoid list errors
-                  // pass the answer and sentence to the handleAnswer function that runs when a button is clicked
-                  <button
-                    className="py-4 px-8 bg-gray-800 rounded-md text-white my-5"
-                    key={option.answer}
-                    onClick={() => handleAnswer(option.answer, option.sentence)}
-                  >
-                    {option.answer}
-                  </button>
-                ))}
-              </div>
+      <Head>
+        <title>CareChange | Communication made better</title>
+        <meta
+          name="description"
+          content="Streamlined communication between clients and professionals."
+        />
+        <meta name="author" content="Jason Chalangary" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="flex flex-col gap-2 min-h-screen text-gray-800">
+        <Navbar />
+        {/* check whether the result should be shown or not */}
+        {!showResult ? (
+          <div className="flex flex-col gap-4 px-4 h-full md:max-h-3/4 justify-start items-center">
+            {/* display the current question text */}
+            <div className=" text-3xl text-center py-5">
+              {currentQuestion?.text}
             </div>
-          ) : (
-            <div className="flex flex-col gap-4 px-4 h-full justify-around items-center ">
-              {/* if the result should be shown, then display the sentences */}
-              <h1 className="w-full text-4xl text-center my-5">Result</h1>
-              {/* display the sentences joined on whitespace*/}
-              <div className="max-w-4xl px-6">
-                <p className="text-center">{sentences.join(" ")}</p>
-              </div>
-              {/* display the reset button */}
-              <div className="flex flex-row justify-around w-full max-w-4xl my-10">
-                <label className="py-4 px-8 bg-gray-800 text-white rounded-md">
-                  <button className=" text-2xl" onClick={resetQuiz}>
-                    Start Again
-                  </button>
-                </label>
-                {/* display the copy to clipboard button */}
-                <label className="pt-5 pr-7 pb-3 pl-8 bg-gray-800 text-white rounded-md">
-                  <CC content={sentences.join(" ")} />
-                </label>
-              </div>
+            {/* display the options */}
+            <div className="flex flex-col h-full justify-around">
+              {currentQuestion?.options.map((option) => (
+                // use the answer as a unique key for each button to avoid list errors
+                // pass the answer and sentence to the handleAnswer function that runs when a button is clicked
+                <button
+                  className="py-4 px-8 bg-gray-800 rounded-md text-white my-5"
+                  key={option.answer}
+                  onClick={() => handleAnswer(option.answer, option.sentence)}
+                >
+                  {option.answer}
+                </button>
+              ))}
             </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-4 px-4 h-full justify-around items-center ">
+            {/* if the result should be shown, then display the sentences */}
+            <h1 className="w-full text-4xl text-center my-5">Result</h1>
+            {/* display the sentences joined on whitespace*/}
+            <div className="max-w-4xl px-6">
+              <p className="text-center">{sentences.join(" ")}</p>
+            </div>
+            {/* display the reset button */}
+            <div className="flex flex-row justify-around w-full max-w-4xl my-10">
+              <label className="py-4 px-8 bg-gray-800 text-white rounded-md">
+                <button className=" text-2xl" onClick={resetQuiz}>
+                  Start Again
+                </button>
+              </label>
+              {/* display the copy to clipboard button */}
+              <label className="pt-5 pr-7 pb-3 pl-8 bg-gray-800 text-white rounded-md">
+                <CC content={sentences.join(" ")} />
+              </label>
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 };
